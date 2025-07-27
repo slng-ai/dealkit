@@ -1,0 +1,261 @@
+{
+  "auth_provider": "vault",
+  "vault": {
+    "url": "${VAULT_URL}",
+    "token": "${VAULT_TOKEN}",
+    "mount_paths": {
+      "sales_workspace": "secret/sales-workspace",
+      "integrations": "secret/integrations",
+      "database": "secret/database",
+      "third_party": "secret/third-party"
+    },
+    "policies": [
+      "YOUR_TOKEN_HERE",
+      "YOUR_TOKEN_HERE",
+      "integrations-read"
+    ],
+    "token_ttl": 3600,
+    "renewable": true
+  },
+  "credential_mapping": {
+    "slack": {
+      "vault_path": "secret/integrations/slack",
+      "fields": {
+        "bot_token": "bot_token",
+        "user_token": "user_token",
+        "signing_secret": "signing_secret",
+        "workspace": "workspace_name"
+      }
+    },
+    "gong": {
+      "vault_path": "secret/integrations/gong",
+      "fields": {
+        "access_key": "access_key",
+        "access_key_secret": "access_secret",
+        "webhook_secret": "webhook_secret"
+      }
+    },
+    "granola": {
+      "vault_path": "secret/integrations/granola",
+      "fields": {
+        "api_key": "api_key",
+        "api_endpoint": "endpoint_url"
+      }
+    },
+    "salesforce": {
+      "vault_path": "secret/integrations/salesforce",
+      "fields": {
+        "client_id": "consumer_key",
+        "client_secret": "consumer_secret",
+        "username": "username",
+        "security_token": "security_token",
+        "instance_url": "instance_url"
+      }
+    },
+    "supabase": {
+      "vault_path": "secret/database/supabase",
+      "fields": {
+        "url": "project_url",
+        "service_role_key": "service_key",
+        "anon_key": "anon_key"
+      }
+    },
+    "notion": {
+      "vault_path": "secret/integrations/notion",
+      "fields": {
+        "api_key": "YOUR_TOKEN_HERE",
+        "workspace_id": "workspace_id"
+      }
+    },
+    "grafana": {
+      "vault_path": "secret/infrastructure/grafana",
+      "fields": {
+        "api_key": "YOUR_TOKEN_HERE",
+        "url": "grafana_url",
+        "org_id": "organization_id"
+      }
+    },
+    "github": {
+      "vault_path": "secret/infrastructure/github",
+      "fields": {
+        "token": "YOUR_TOKEN_HERE",
+        "organization": "organization_name"
+      }
+    },
+    "google_workspace": {
+      "vault_path": "secret/integrations/google",
+      "fields": {
+        "client_id": "oauth_client_id",
+        "client_secret": "oauth_client_secret",
+        "refresh_token": "oauth_refresh_token"
+      }
+    },
+    "linkedin": {
+      "vault_path": "secret/integrations/linkedin",
+      "fields": {
+        "session_cookie": "li_at_cookie",
+        "csrf_token": "csrf_token"
+      }
+    }
+  },
+  "access_control": {
+    "roles": {
+      "admin": {
+        "description": "Full workspace administration",
+        "permissions": [
+          "read:all",
+          "write:all",
+          "admin:all"
+        ],
+        "vault_policies": [
+          "YOUR_TOKEN_HERE"
+        ]
+      },
+      "sales_manager": {
+        "description": "Sales team management and reporting",
+        "permissions": [
+          "read:all",
+          "write:team_data",
+          "write:reports",
+          "read:individual_performance"
+        ],
+        "vault_policies": [
+          "YOUR_TOKEN_HERE"
+        ]
+      },
+      "sales_rep": {
+        "description": "Individual sales representative",
+        "permissions": [
+          "read:own_data",
+          "write:own_data",
+          "read:team_knowledge",
+          "write:customer_interactions"
+        ],
+        "vault_policies": [
+          "sales-workspace-rep"
+        ]
+      },
+      "sales_ops": {
+        "description": "Sales operations and system management",
+        "permissions": [
+          "read:all",
+          "write:system_config",
+          "write:integrations",
+          "admin:monitoring"
+        ],
+        "vault_policies": [
+          "sales-workspace-ops"
+        ]
+      },
+      "readonly": {
+        "description": "Read-only access for reporting",
+        "permissions": [
+          "read:reports",
+          "read:team_performance"
+        ],
+        "vault_policies": [
+          "YOUR_TOKEN_HERE"
+        ]
+      }
+    },
+    "user_assignments": {
+      "default_role": "sales_rep",
+      "role_mapping": {
+        "user@yourcompany.com": "admin",
+        "user@yourcompany.com": "sales_manager",
+        "user@yourcompany.com": "sales_ops"
+      }
+    }
+  },
+  "session_management": {
+    "session_timeout": 28800,
+    "idle_timeout": 3600,
+    "YOUR_TOKEN_HERE": 3,
+    "require_mfa": true,
+    "YOUR_TOKEN_HERE": 30
+  },
+  "audit_logging": {
+    "enabled": true,
+    "log_authentication": true,
+    "log_authorization": true,
+    "log_data_access": true,
+    "YOUR_TOKEN_HERE": true,
+    "retention_days": 365,
+    "export_format": "json",
+    "storage_backend": "elasticsearch"
+  },
+  "security_policies": {
+    "YOUR_TOKEN_HERE": {
+      "min_length": 12,
+      "require_uppercase": true,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "YOUR_TOKEN_HERE": true,
+      "password_history": 12,
+      "max_age_days": 90
+    },
+    "account_lockout": {
+      "YOUR_TOKEN_HERE": 5,
+      "YOUR_TOKEN_HERE": 30,
+      "progressive_delays": true
+    },
+    "ip_restrictions": {
+      "enabled": false,
+      "allowed_ranges": [
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16"
+      ],
+      "vpn_required": false
+    }
+  },
+  "encryption": {
+    "data_at_rest": {
+      "algorithm": "AES-256-GCM",
+      "key_rotation_days": 90,
+      "key_source": "vault"
+    },
+    "data_in_transit": {
+      "tls_version": "1.3",
+      "cipher_suites": [
+        "YOUR_TOKEN_HERE",
+        "YOUR_TOKEN_HERE"
+      ],
+      "YOUR_TOKEN_HERE": "internal"
+    }
+  },
+  "compliance": {
+    "gdpr": {
+      "enabled": true,
+      "data_retention_days": 2555,
+      "right_to_erasure": true,
+      "data_portability": true,
+      "consent_tracking": true
+    },
+    "ccpa": {
+      "enabled": true,
+      "opt_out_honored": true,
+      "data_disclosure": true
+    },
+    "sox": {
+      "enabled": false,
+      "YOUR_TOKEN_HERE": false
+    }
+  },
+  "monitoring": {
+    "failed_login_alerts": {
+      "threshold": 3,
+      "time_window_minutes": 15,
+      "YOUR_TOKEN_HERE": ["slack", "email"]
+    },
+    "YOUR_TOKEN_HERE": {
+      "enabled": true,
+      "YOUR_TOKEN_HERE": ["slack", "pagerduty"]
+    },
+    "YOUR_TOKEN_HERE": {
+      "enabled": true,
+      "ml_detection": false,
+      "YOUR_TOKEN_HERE": ["slack"]
+    }
+  }
+}

@@ -1,0 +1,51 @@
+Company,Industry,Revenue,Employees,ICP_Score,Model_Type,Use_Case,Notes
+Stripe,Fintech,$7.4B,7000,95,LLM+Traditional,Fraud detection + Support,High-value target - existing ML team
+Airbnb,Travel,$8.4B,6500,92,Vision+LLM,Listing quality + Search,Multiple use cases identified
+DoorDash,Delivery,$6.6B,7000,90,Traditional+LLM,Route optimization + Support,Real-time requirements
+Instacart,E-commerce,$2.9B,3500,88,Vision+Traditional,Product recognition + Recommendations,Scale challenges
+Robinhood,Fintech,$1.8B,3400,87,Traditional+LLM,Risk scoring + Customer service,Regulatory requirements
+Coinbase,Crypto,$3.2B,3700,86,Traditional,Fraud detection + Compliance,High-volume processing
+Square,Fintech,$17.7B,8000,85,Traditional+Vision,Payment processing + Receipt scanning,Multiple products
+Affirm,Fintech,$1.2B,2500,84,Traditional,Credit decisioning,Real-time needs
+Chime,Banking,$25B,1800,83,Traditional+LLM,Fraud + Customer support,Growing rapidly
+Plaid,Fintech,$13.4B,800,82,Traditional,Transaction categorization,API-first company
+Discord,Social,$15B,1000,90,Multimodal,Content moderation,Scale challenges
+Notion,Productivity,$10B,600,88,LLM,AI features + Search,Product differentiation
+Canva,Design,$26B,3500,87,Vision+Generative,Template creation + Editing,Multiple models
+Figma,Design,$20B,1200,85,Vision+LLM,Design assistance + Search,Adobe competition
+Linear,Productivity,$400M,50,82,LLM,Issue automation + Search,Developer-focused
+Grammarly,Writing,$13B,600,89,LLM,Writing assistance,Large scale
+Duolingo,Education,$8.5B,700,86,Speech+LLM,Language learning,Multimodal needs
+Coursera,Education,$7B,1100,84,LLM+Vision,Course assistance + Proctoring,Multiple use cases
+MasterClass,Education,$2.8B,500,82,Vision+Speech,Content analysis + Transcription,Media processing
+Zoom,Video,$4B,6700,85,Speech+Vision,Transcription + Virtual backgrounds,Real-time needs
+Epic Games,Gaming,$31.5B,3500,92,Generative+Vision,Asset creation + Anti-cheat,High compute needs
+Roblox,Gaming,$68B,2100,90,Generative+Vision,Content moderation + Generation,Scale requirements
+Unity,Gaming,$8B,7700,88,Vision+Generative,Asset optimization + Creation,Developer platform
+Niantic,Gaming,$9B,1000,85,Vision+LLM,AR processing + Game mechanics,Edge deployment
+Activision,Gaming,$68B,13000,87,Vision+Traditional,Anti-cheat + Matchmaking,Multiple titles
+Wayfair,E-commerce,$12B,16000,89,Vision+LLM,Visual search + Recommendations,Large catalog
+Etsy,E-commerce,$13B,2400,87,Vision+LLM,Search + Content moderation,Marketplace dynamics
+Shopify,E-commerce,$70B,10000,90,LLM+Traditional,Store optimization + Support,Platform play
+StockX,E-commerce,$3.8B,1500,85,Vision,Authentication + Search,Specialized vision
+Mercari,E-commerce,$2B,1800,83,Vision+LLM,Listing quality + Search,International
+Peloton,Fitness,$5B,3600,84,Vision+Speech,Form analysis + Coaching,Real-time feedback
+Strava,Fitness,$1.5B,700,82,Traditional+Vision,Performance analysis + Photos,Community features
+Calm,Wellness,$2B,400,83,Speech+Generative,Content creation + Personalization,Audio processing
+Headspace,Wellness,$1.2B,300,81,Speech+LLM,Meditation guidance + Chat,Voice synthesis
+Noom,Health,$2B,3300,85,LLM+Vision,Coaching + Food recognition,Personalization
+Oscar Health,Insurance,$4B,1600,86,Traditional+LLM,Claims processing + Support,Healthcare compliance
+Devoted Health,Insurance,$13B,2000,85,Traditional+LLM,Risk prediction + Care coordination,Medicare focus
+Cedar,Healthcare,$3.2B,600,83,Traditional+LLM,Billing optimization + Support,Revenue cycle
+Forward,Healthcare,$1B,500,84,Vision+LLM,Diagnostics + Patient communication,AI-first healthcare
+Babylon Health,Healthcare,$1B,2000,82,LLM+Vision,Symptom checking + Triage,International
+Datadog,Monitoring,$31B,3100,88,Traditional+LLM,Anomaly detection + Insights,Developer tool
+Snowflake,Data,$60B,4500,87,Traditional,Query optimization + Predictions,Data platform
+Databricks,Data,$38B,5000,89,All types,MLOps platform customer,Strategic partner
+MongoDB,Database,$24B,3700,85,Traditional+LLM,Query optimization + Chatbot,NoSQL leader
+Confluent,Data,$10B,2500,84,Traditional,Stream processing + Analytics,Kafka company
+Twilio,Communications,$7B,8000,86,Speech+LLM,Voice intelligence + Chatbots,API platform
+SendGrid,Email,$3B,800,82,Traditional+LLM,Email optimization + Automation,Twilio owned
+PagerDuty,DevOps,$2B,900,83,Traditional+LLM,Incident prediction + Automation,AIOps opportunity
+LaunchDarkly,DevOps,$3B,300,81,Traditional,Feature flag optimization,Developer tool
+Vercel,Infrastructure,$2.5B,350,85,Traditional+LLM,Performance optimization + AI features,Next.js company

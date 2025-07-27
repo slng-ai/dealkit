@@ -1,0 +1,152 @@
+{
+  "slack_workspace": "acme-workspace",
+  "api_token": "${SLACK_API_TOKEN}",
+  "channels": [
+    "#sales",
+    "#sales-wins",
+    "#customer-success",
+    "#support",
+    "#product-feedback",
+    "#engineering",
+    "#account-management",
+    "#renewals",
+    "#competitive-intel"
+  ],
+  "customer_channels": {
+    "pattern": "#customer-*",
+    "examples": [
+      "#customer-acme-corp",
+      "#customer-techstart",
+      "#customer-dataflow"
+    ]
+  },
+  "fetch_settings": {
+    "YOUR_TOKEN_HERE": 1,
+    "history_days": 30,
+    "batch_size": 100,
+    "YOUR_TOKEN_HERE": 50
+  },
+  "monitoring": {
+    "keywords": {
+      "buying_signals": [
+        "budget approved",
+        "ready to buy",
+        "looking for solution",
+        "need this by",
+        "quarterly planning",
+        "fiscal year",
+        "procurement"
+      ],
+      "churn_risks": [
+        "not happy",
+        "frustrated",
+        "considering alternatives",
+        "cancel",
+        "competitor",
+        "switching",
+        "disappointed"
+      ],
+      "YOUR_TOKEN_HERE": [
+        "need more",
+        "additional users",
+        "new team",
+        "scaling up",
+        "growing fast",
+        "hit limits",
+        "upgrade"
+      ],
+      "technical_issues": [
+        "bug",
+        "broken",
+        "not working",
+        "error",
+        "crash",
+        "performance",
+        "slow"
+      ]
+    },
+    "importance_keywords": {
+      "critical": [
+        "urgent",
+        "critical",
+        "blocker",
+        "showstopper",
+        "emergency",
+        "asap",
+        "immediately"
+      ],
+      "high": [
+        "important",
+        "priority",
+        "soon",
+        "this week",
+        "concerned",
+        "escalate"
+      ],
+      "medium": [
+        "issue",
+        "problem",
+        "question",
+        "help",
+        "stuck",
+        "confused"
+      ],
+      "low": [
+        "fyi",
+        "update",
+        "info",
+        "minor",
+        "nice to have",
+        "whenever"
+      ]
+    }
+  },
+  "sentiment_analysis": {
+    "positive_indicators": [
+      "love",
+      "great",
+      "excellent",
+      "amazing",
+      "fantastic",
+      "happy",
+      "pleased",
+      "excited",
+      "thank you",
+      "awesome",
+      "perfect",
+      "wonderful"
+    ],
+    "negative_indicators": [
+      "hate",
+      "terrible",
+      "awful",
+      "disappointed",
+      "frustrated",
+      "angry",
+      "unacceptable",
+      "poor",
+      "bad",
+      "issue",
+      "problem",
+      "broken"
+    ]
+  },
+  "data_organization": {
+    "save_raw_messages": true,
+    "YOUR_TOKEN_HERE": true,
+    "generate_summaries": true,
+    "alert_on_mentions": true
+  },
+  "YOUR_TOKEN_HERE": {
+    "sync_to_crm": true,
+    "YOUR_TOKEN_HERE": true,
+    "trigger_workflows": true,
+    "YOUR_TOKEN_HERE": true
+  },
+  "alert_channels": {
+    "high_importance": "#sales-alerts",
+    "churn_risk": "#customer-success-alerts",
+    "expansion": "#account-management",
+    "technical": "#support-escalations"
+  }
+}

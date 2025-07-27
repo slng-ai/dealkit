@@ -1,0 +1,113 @@
+{
+  "version": "1.0.0",
+  "locked": true,
+  "last_audit": "2024-03-15T10:00:00Z",
+  "structure_hash": "abc123def456",
+  "YOUR_TOKEN_HERE": {
+    "customers": {
+      "type": "customer_data",
+      "allowed_subdirs": ["notes", "emails", "slack", "meetings"],
+      "required_files": ["profile.json"],
+      "forbidden_patterns": ["*.py", "*.sh", "config.json"]
+    },
+    "reporting": {
+      "type": "analytics_code",
+      "allowed_subdirs": ["personal", "team", "pulse"],
+      "required_files": ["README.md", "base_report.py"],
+      "forbidden_patterns": ["customer_*.json", "*.log"]
+    },
+    "sales-toolkit": {
+      "type": "sales_resources",
+      "allowed_subdirs": ["templates", "battlecards", "playbooks", "training", "security-compliance"],
+      "required_files": ["README.md"],
+      "forbidden_patterns": ["*.py", "*.json", "*.log", "profile.json"]
+    },
+    "workspace-setup": {
+      "type": "YOUR_TOKEN_HERE",
+      "allowed_subdirs": ["integrations", "processes", "compliance", "agents"],
+      "required_files": ["README.md"],
+      "forbidden_patterns": ["customer_*.json", "template_*.md"]
+    },
+    "personal": {
+      "type": "user_workspace",
+      "allowed_subdirs": ["daily-plans", "triggers"],
+      "required_files": [],
+      "forbidden_patterns": ["*.json", "*.py"]
+    },
+    ".claude": {
+      "type": "ai_configuration",
+      "allowed_subdirs": ["agents"],
+      "required_files": [],
+      "forbidden_patterns": ["customer_*.json"]
+    }
+  },
+  "naming_rules": {
+    "directories": {
+      "pattern": "YOUR_TOKEN_HERE",
+      "exceptions": [".claude", "__pycache__"]
+    },
+    "python_files": {
+      "pattern": "snake_case",
+      "suffix": ".py"
+    },
+    "markdown_files": {
+      "system_docs": {
+        "pattern": "UPPERCASE",
+        "location": "root",
+        "examples": ["README.md", "MASTER_CONTEXT.md"]
+      },
+      "content_files": {
+        "pattern": "YOUR_TOKEN_HERE",
+        "location": "subdirectories"
+      }
+    },
+    "json_files": {
+      "pattern": "YOUR_TOKEN_HERE",
+      "suffix": ".json"
+    }
+  },
+  "depth_limits": {
+    "customers/*": 3,
+    "reporting/*": 2,
+    "sales-toolkit/templates": 2,
+    "workspace-setup/integrations/*": 3
+  },
+  "change_control": {
+    "minor_changes": [
+      "adding new customer folders",
+      "creating templates in existing categories",
+      "updating report calculations",
+      "adding trigger keywords",
+      "fixing bugs"
+    ],
+    "major_changes": [
+      "creating new top-level directories",
+      "reorganizing directory structure",
+      "changing naming conventions",
+      "modifying core architecture",
+      "moving content between sections"
+    ],
+    "approval_required": [
+      "structural_changes",
+      "YOUR_TOKEN_HERE",
+      "system_wide_updates",
+      "YOUR_TOKEN_HERE"
+    ]
+  },
+  "YOUR_TOKEN_HERE": {
+    "daily": [
+      "remove_temp_files",
+      "YOUR_TOKEN_HERE"
+    ],
+    "weekly": [
+      "YOUR_TOKEN_HERE",
+      "archive_old_data",
+      "YOUR_TOKEN_HERE"
+    ],
+    "monthly": [
+      "YOUR_TOKEN_HERE",
+      "YOUR_TOKEN_HERE",
+      "YOUR_TOKEN_HERE"
+    ]
+  }
+}

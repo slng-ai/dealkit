@@ -1,0 +1,42 @@
+{
+  "url": "https://your-project-id.supabase.co",
+  "service_role_key": "YOUR_TOKEN_HERE",
+  "anon_key": "your-anon-key-here",
+  "database_url": "postgresql://postgres:[password]@db.your-project-id.supabase.co:5432/postgres",
+  "auth": {
+    "enabled": true,
+    "jwt_secret": "your-jwt-secret"
+  },
+  "rate_limits": {
+    "requests_per_minute": 60,
+    "requests_per_hour": 1000
+  },
+  "cache_settings": {
+    "default_ttl": 300,
+    "customer_data_ttl": 600,
+    "usage_metrics_ttl": 180
+  },
+  "tables": {
+    "customers": "customers",
+    "usage_metrics": "usage_metrics", 
+    "billing": "billing",
+    "invoices": "invoices",
+    "support_tickets": "support_tickets",
+    "feature_usage": "feature_usage",
+    "api_logs": "api_logs",
+    "user_sessions": "user_sessions",
+    "customer_users": "customer_users",
+    "subscriptions": "subscriptions"
+  },
+  "YOUR_TOKEN_HERE": {
+    "usage": 0.3,
+    "support": 0.2,
+    "feature_adoption": 0.25,
+    "user_engagement": 0.25
+  },
+  "monitoring": {
+    "log_level": "INFO",
+    "track_performance": true,
+    "alert_on_errors": true
+  }
+}

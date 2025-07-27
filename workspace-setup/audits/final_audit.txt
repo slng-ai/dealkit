@@ -1,0 +1,65 @@
+🔍 Starting Sales Workspace Audit...
+==================================================
+
+📁 Auditing directory structure...
+
+📝 Auditing naming conventions...
+
+🚦 Auditing separation of concerns...
+
+🗂️ Auditing file organization...
+
+📄 Auditing required files...
+
+🔐 Auditing security boundaries...
+
+📏 Auditing depth limits...
+
+💾 Audit results saved to: audits/audit_20250728_011830.json
+
+==================================================
+📊 AUDIT SUMMARY
+==================================================
+
+Health Score: 0/100 🔴
+Status: NEEDS_ATTENTION
+
+Violations: 30
+Warnings: 81
+
+🚨 VIOLATIONS:
+
+NAMING:
+  ❌ Folder uses underscores: customers/profiles/acme-inc/usage_data
+  ❌ Python file not snake_case: reporting/__init__.py
+  ❌ Python file not snake_case: workspace-setup/integrations/__init__.py
+  ❌ Python file not snake_case: workspace-setup/integrations/attio/__init__.py
+  ❌ Python file not snake_case: workspace-setup/integrations/granola/__init__.py
+  ... and 17 more
+
+ORGANIZATION:
+  ❌ Missing profile.json: customers/profiles
+
+SECURITY:
+  ❌ Potential sensitive data in public area: sales-toolkit/demo/demo_environment_setup.md
+  ❌ Potential sensitive data in public area: sales-toolkit/contracts/privacy_policy.md
+  ❌ Potential sensitive data in public area: sales-toolkit/product/README.md
+  ❌ Potential sensitive data in public area: sales-toolkit/templates/proposal_executive_summary.md
+  ❌ Potential sensitive data in public area: sales-toolkit/templates/objection_handling_playbook.md
+  ... and 2 more
+
+⚠️ WARNINGS:
+
+STRUCTURE:
+  ⚠️ Unexpected top-level directory: audits
+
+NAMING:
+  ⚠️ JSON file uses hyphens: .structure-lock.json
+  ⚠️ Markdown file naming inconsistent: workspace-setup/dashboard_samples.md
+  ⚠️ Markdown file naming inconsistent: workspace-setup/process_standards.md
+  ... and 77 more
+
+💡 RECOMMENDATIONS:
+  1. Review and fix all violations
+  2. Address naming convention issues
+  3. Ensure all required files are present

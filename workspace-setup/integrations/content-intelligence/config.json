@@ -1,0 +1,244 @@
+{
+  "content_intelligence": {
+    "description": "Monitors external knowledge sources and suggests sales toolkit improvements",
+    "version": "1.0.0",
+    "enabled": true
+  },
+  "data_sources": {
+    "notion": {
+      "enabled": true,
+      "api_key": "${NOTION_API_KEY}",
+      "databases": [
+        {
+          "name": "Win/Loss Analysis",
+          "id": "${NOTION_WINLOSS_DB_ID}",
+          "monitor_fields": ["outcome", "key_factors", "competitor", "objections"],
+          "update_frequency": "hourly"
+        },
+        {
+          "name": "Customer Call Notes", 
+          "id": "${NOTION_CALLS_DB_ID}",
+          "monitor_fields": ["meeting_notes", "action_items", "concerns", "positive_feedback"],
+          "update_frequency": "daily"
+        },
+        {
+          "name": "Competitor Intelligence",
+          "id": "${NOTION_COMPETITOR_DB_ID}",
+          "monitor_fields": ["competitor_name", "features", "pricing", "positioning"],
+          "update_frequency": "daily"
+        }
+      ]
+    },
+    "google_docs": {
+      "enabled": true,
+      "credentials_path": "${GOOGLE_CREDENTIALS_PATH}",
+      "folders": [
+        {
+          "name": "Sales Templates",
+          "id": "${GDOCS_TEMPLATES_FOLDER_ID}",
+          "monitor_types": ["email_templates", "call_scripts", "proposals"],
+          "track_metrics": ["last_used", "success_rate", "modifications"]
+        },
+        {
+          "name": "Deal Proposals",
+          "id": "${GDOCS_PROPOSALS_FOLDER_ID}",
+          "monitor_types": ["proposals", "contracts"],
+          "track_metrics": ["sections_used", "customer_edits", "close_rate"]
+        }
+      ]
+    },
+    "slack": {
+      "enabled": true,
+      "workspace_token": "${SLACK_WORKSPACE_TOKEN}",
+      "channels": [
+        {
+          "name": "sales-wins",
+          "id": "${SLACK_WINS_CHANNEL_ID}",
+          "patterns": ["closed", "won", "signed", "successful"],
+          "extract": ["winning_message", "key_tactics", "timeline"]
+        },
+        {
+          "name": "competitive-intel",
+          "id": "${SLACK_COMPETITIVE_CHANNEL_ID}",
+          "patterns": ["competitor", "lost to", "competing against", "vs"],
+          "extract": ["competitor_name", "feature_gaps", "pricing_intel"]
+        },
+        {
+          "name": "lost-deals",
+          "id": "${SLACK_LOSSES_CHANNEL_ID}",
+          "patterns": ["lost", "chose competitor", "no decision"],
+          "extract": ["loss_reason", "competitor_won", "missing_features"]
+        },
+        {
+          "name": "customer-feedback",
+          "id": "${SLACK_FEEDBACK_CHANNEL_ID}",
+          "patterns": ["feedback", "customer said", "prospect mentioned"],
+          "extract": ["feedback_type", "specific_quotes", "feature_requests"]
+        }
+      ]
+    },
+    "confluence": {
+      "enabled": false,
+      "base_url": "${CONFLUENCE_BASE_URL}",
+      "api_token": "${CONFLUENCE_API_TOKEN}",
+      "spaces": [
+        {
+          "name": "Sales Playbooks",
+          "key": "SALES",
+          "monitor_pages": ["playbooks", "methodologies", "processes"]
+        }
+      ]
+    }
+  },
+  "analysis_rules": {
+    "win_patterns": {
+      "min_occurrences": 3,
+      "confidence_threshold": 0.75,
+      "time_window_days": 30,
+      "categories": [
+        "messaging",
+        "positioning", 
+        "proof_points",
+        "objection_handling",
+        "pricing_strategy"
+      ]
+    },
+    "loss_patterns": {
+      "min_occurrences": 2,
+      "confidence_threshold": 0.7,
+      "categories": [
+        "competitor_advantages",
+        "feature_gaps",
+        "pricing_issues",
+        "process_friction",
+        "timing_problems"
+      ]
+    },
+    "content_effectiveness": {
+      "metrics": {
+        "email_open_rate": {"good": 0.3, "great": 0.4},
+        "email_response_rate": {"good": 0.1, "great": 0.2},
+        "demo_conversion": {"good": 0.5, "great": 0.7},
+        "proposal_win_rate": {"good": 0.3, "great": 0.5}
+      }
+    }
+  },
+  "suggestion_engine": {
+    "confidence_levels": {
+      "high": 0.8,
+      "medium": 0.6,
+      "low": 0.4
+    },
+    "suggestion_types": {
+      "update_existing": {
+        "description": "Modify existing content with proven improvements",
+        "auto_pr": false,
+        "requires_approval": true
+      },
+      "create_new": {
+        "description": "Generate new templates or content",
+        "auto_pr": false,
+        "requires_approval": true
+      },
+      "remove_outdated": {
+        "description": "Archive content that's no longer effective",
+        "auto_pr": false,
+        "requires_approval": true
+      },
+      "reorganize": {
+        "description": "Restructure content for better discovery",
+        "auto_pr": false,
+        "requires_approval": true
+      }
+    },
+    "priority_scoring": {
+      "factors": {
+        "usage_frequency": 0.3,
+        "revenue_impact": 0.4,
+        "team_votes": 0.2,
+        "recency": 0.1
+      }
+    }
+  },
+  "automation_settings": {
+    "monitoring_schedule": {
+      "notion": "0 */1 * * *",
+      "google_docs": "0 */4 * * *", 
+      "slack": "*/15 * * * *",
+      "confluence": "0 0 * * *"
+    },
+    "suggestion_generation": {
+      "frequency": "daily",
+      "time": "09:00",
+      "timezone": "America/New_York"
+    },
+    "notifications": {
+      "channels": {
+        "slack": "#sales-operations",
+        "email": "sales-ops@company.com"
+      },
+      "triggers": {
+        "high_confidence_suggestion": true,
+        "multiple_similar_patterns": true,
+        "negative_trend_detected": true
+      }
+    }
+  },
+  "content_mapping": {
+    "sales-toolkit/templates/": {
+      "monitors": ["google_docs:templates", "slack:wins"],
+      "update_rules": ["proven_messaging", "higher_conversion"]
+    },
+    "sales-toolkit/battlecards/": {
+      "monitors": ["notion:competitor_intelligence", "slack:competitive-intel"],
+      "update_rules": ["new_competitor_info", "win_loss_insights"]
+    },
+    "sales-toolkit/playbooks/": {
+      "monitors": ["notion:win_loss", "confluence:playbooks"],
+      "update_rules": ["process_improvements", "methodology_updates"]
+    },
+    "sales-toolkit/objection-handling/": {
+      "monitors": ["notion:call_notes", "slack:lost-deals"],
+      "update_rules": ["new_objections", "successful_responses"]
+    }
+  },
+  "security": {
+    "data_handling": {
+      "pii_redaction": true,
+      "customer_anonymization": true,
+      "sensitive_data_patterns": [
+        "ssn",
+        "credit_card",
+        "api_key",
+        "password"
+      ]
+    },
+    "access_control": {
+      "read_only_mode": true,
+      "respect_source_permissions": true,
+      "audit_logging": true
+    }
+  },
+  "reporting": {
+    "dashboards": {
+      "content_health": {
+        "metrics": ["update_frequency", "usage_stats", "effectiveness_scores"],
+        "refresh_rate": "hourly"
+      },
+      "suggestion_impact": {
+        "metrics": ["suggestions_generated", "adoption_rate", "outcome_correlation"],
+        "refresh_rate": "daily"
+      }
+    },
+    "alerts": {
+      "stale_content": {
+        "threshold_days": 90,
+        "action": "notify"
+      },
+      "low_performing_content": {
+        "threshold_effectiveness": 0.3,
+        "action": "suggest_update"
+      }
+    }
+  }
+}

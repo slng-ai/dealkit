@@ -1,0 +1,232 @@
+{
+  "company": "[Your Company]",
+  "workspace_config": {
+    "name": "Sales Workspace",
+    "version": "1.0.0",
+    "environment": "production",
+    "timezone": "America/Los_Angeles"
+  },
+  "auth_manager": {
+    "provider": "vault",
+    "vault_url": "${VAULT_URL}",
+    "mount_path": "secret/sales-workspace",
+    "token_source": "environment",
+    "YOUR_TOKEN_HERE": 3600
+  },
+  "input_systems": {
+    "default_crm": "salesforce",
+    "YOUR_TOKEN_HERE": "slack",
+    "YOUR_TOKEN_HERE": "granola",
+    "YOUR_TOKEN_HERE": "gong",
+    "default_email": "gmail",
+    "YOUR_TOKEN_HERE": "supabase",
+    "default_calendar": "google_calendar",
+    "default_prospecting": "YOUR_TOKEN_HERE"
+  },
+  "output_systems": {
+    "primary_reporting": "notion",
+    "backup_reporting": "salesforce_reports",
+    "YOUR_TOKEN_HERE": "grafana",
+    "document_storage": "google_drive",
+    "presentation_slides": "google_slides",
+    "email_sequences": "outreach_io",
+    "social_posting": "hootsuite"
+  },
+  "core_infrastructure": {
+    "logging_system": {
+      "provider": "grafana",
+      "log_aggregation": "loki",
+      "metrics": "prometheus",
+      "alerting": "pagerduty",
+      "retention_days": 90
+    },
+    "git_system": {
+      "provider": "github",
+      "organization": "your-sales-org",
+      "default_branch": "main",
+      "auto_sync_enabled": true,
+      "backup_repositories": ["gitlab"]
+    },
+    "database_system": {
+      "primary": "supabase",
+      "cache": "redis",
+      "search": "elasticsearch",
+      "backup": "s3"
+    },
+    "notification_system": {
+      "primary": "slack",
+      "email_alerts": "sendgrid",
+      "sms_alerts": "twilio",
+      "push_notifications": "firebase"
+    }
+  },
+  "integrations": {
+    "slack": {
+      "enabled": true,
+      "workspace": "${SLACK_WORKSPACE}",
+      "bot_token": "${SLACK_BOT_TOKEN}",
+      "user_token": "${SLACK_USER_TOKEN}",
+      "signing_secret": "${SLACK_SIGNING_SECRET}",
+      "channels": {
+        "sales_team": "#sales-team",
+        "deals": "#deals",
+        "customer_updates": "#customer-updates",
+        "alerts": "#sales-alerts"
+      }
+    },
+    "gong": {
+      "enabled": true,
+      "api_url": "https://api.gong.io/v2",
+      "access_key": "${GONG_ACCESS_KEY}",
+      "access_key_secret": "${GONG_ACCESS_SECRET}",
+      "webhook_secret": "${GONG_WEBHOOK_SECRET}",
+      "auto_transcription": true
+    },
+    "granola": {
+      "enabled": true,
+      "api_endpoint": "${GRANOLA_API_ENDPOINT}",
+      "api_key": "${GRANOLA_API_KEY}",
+      "auto_sync": true
+    },
+    "email": {
+      "enabled": true,
+      "provider": "gmail",
+      "oauth_enabled": true,
+      "client_id": "${GMAIL_CLIENT_ID}",
+      "client_secret": "${GMAIL_CLIENT_SECRET}",
+      "tracking_enabled": true
+    },
+    "salesforce": {
+      "enabled": true,
+      "instance_url": "${SFDC_INSTANCE_URL}",
+      "client_id": "${SFDC_CLIENT_ID}",
+      "client_secret": "${SFDC_CLIENT_SECRET}",
+      "username": "${SFDC_USERNAME}",
+      "security_token": "${SFDC_SECURITY_TOKEN}",
+      "manual_sync": false,
+      "real_time_sync": true
+    },
+    "supabase": {
+      "enabled": true,
+      "url": "${SUPABASE_URL}",
+      "service_role_key": "${SUPABASE_SERVICE_KEY}",
+      "anon_key": "${SUPABASE_ANON_KEY}",
+      "real_time_enabled": true
+    },
+    "notion": {
+      "enabled": true,
+      "api_key": "${NOTION_API_KEY}",
+      "workspace_id": "${NOTION_WORKSPACE_ID}",
+      "databases": {
+        "customers": "${NOTION_CUSTOMERS_DB}",
+        "deals": "${NOTION_DEALS_DB}",
+        "reports": "${NOTION_REPORTS_DB}"
+      }
+    },
+    "grafana": {
+      "enabled": true,
+      "url": "${GRAFANA_URL}",
+      "api_key": "${GRAFANA_API_KEY}",
+      "org_id": "${GRAFANA_ORG_ID}",
+      "dashboards": {
+        "sales_overview": "sales-team-overview",
+        "pipeline_health": "YOUR_TOKEN_HERE",
+        "YOUR_TOKEN_HERE": "YOUR_TOKEN_HERE"
+      }
+    },
+    "github": {
+      "enabled": true,
+      "organization": "your-sales-org",
+      "token": "${GITHUB_TOKEN}",
+      "repositories": {
+        "workspace": "sales-workspace",
+        "knowledge_base": "YOUR_TOKEN_HERE",
+        "integrations": "sales-integrations"
+      }
+    },
+    "YOUR_TOKEN_HERE": {
+      "enabled": true,
+      "session_cookie": "${LINKEDIN_SESSION_COOKIE}",
+      "csrf_token": "${LINKEDIN_CSRF_TOKEN}",
+      "rate_limit_enabled": true
+    },
+    "google_workspace": {
+      "enabled": true,
+      "client_id": "${GOOGLE_CLIENT_ID}",
+      "client_secret": "${GOOGLE_CLIENT_SECRET}",
+      "services": {
+        "calendar": true,
+        "drive": true,
+        "sheets": true,
+        "slides": true
+      }
+    }
+  },
+  "refresh_intervals": {
+    "slack": 300,
+    "gong": 3600,
+    "granola": 1800,
+    "email": 900,
+    "salesforce": 600,
+    "supabase": 300,
+    "notion": 1800,
+    "linkedin": 7200
+  },
+  "data_flows": {
+    "YOUR_TOKEN_HERE": {
+      "sources": ["salesforce", "slack", "gong", "granola", "email", "supabase"],
+      "destination": "notion",
+      "schedule": "*/15 * * * *",
+      "transformation": "YOUR_TOKEN_HERE"
+    },
+    "pipeline_reporting": {
+      "sources": ["salesforce", "gong", "granola"],
+      "destination": "grafana",
+      "schedule": "0 */4 * * *",
+      "transformation": "YOUR_TOKEN_HERE"
+    },
+    "activity_tracking": {
+      "sources": ["slack", "email", "gong", "salesforce"],
+      "destination": "notion",
+      "schedule": "0 0 * * *",
+      "transformation": "YOUR_TOKEN_HERE"
+    }
+  },
+  "features": {
+    "auto_context_build": true,
+    "next_steps_ai": true,
+    "outbound_targeting": true,
+    "YOUR_TOKEN_HERE": true,
+    "automatic_reporting": true,
+    "YOUR_TOKEN_HERE": true,
+    "YOUR_TOKEN_HERE": true,
+    "YOUR_TOKEN_HERE": true,
+    "deal_risk_analysis": true,
+    "YOUR_TOKEN_HERE": true
+  },
+  "security": {
+    "encryption_at_rest": true,
+    "YOUR_TOKEN_HERE": true,
+    "audit_logging": true,
+    "data_retention_days": 2555,
+    "gdpr_compliance": true,
+    "access_control": "rbac",
+    "mfa_required": true
+  },
+  "monitoring": {
+    "health_checks": {
+      "interval_seconds": 60,
+      "timeout_seconds": 30,
+      "retry_attempts": 3
+    },
+    "performance_metrics": {
+      "YOUR_TOKEN_HERE": 5000,
+      "YOUR_TOKEN_HERE": 5,
+      "YOUR_TOKEN_HERE": 99.5
+    },
+    "alerting": {
+      "channels": ["slack", "email", "pagerduty"],
+      "YOUR_TOKEN_HERE": 15
+    }
+  }
+}

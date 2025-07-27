@@ -1,0 +1,46 @@
+# Personal and sensitive data
+.env
+personal/daily-plans/*
+personal/triggers/*
+!personal/daily-plans/.gitkeep
+!personal/triggers/.gitkeep
+
+# Customer data (for team deployments)
+customers/*
+!customers/templates/
+!customers/workflows/
+!customers/sample-customer/
+!customers/README.md
+
+# Logs and temporary files
+*.log
+logs/
+*.pid
+*.tmp
+*.bak
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Audit results
+audits/*.json
+audits/*.txt
+
+# Cache
+.cache/
+*.cache
+
+# OS
+Thumbs.db
