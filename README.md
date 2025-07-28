@@ -1,5 +1,7 @@
 # 🚀 DealKit - AI-Native Sales Workspace using Claude Code. 
 
+![DealKit - #1 AI Native Sales Tool](./selling-with-claude-code.png)
+
 > Transform your sales operations with an intelligent, self-organizing workspace that brings together customer intelligence, automated workflows, and AI-powered insights.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
